@@ -17,7 +17,7 @@ def upload_file_serial(file, port, baud, verbose):
 	try:
 		f = open(file, 'r')
 	except:
-		echo "Could not open file {file}".format(file)
+		echo "Could not open file {file}".format(file = file)
 
 	try:
 		s = serial.Serial(port, baud)
