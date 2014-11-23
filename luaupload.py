@@ -8,9 +8,8 @@ import serial
 
 @click.command()
 @click.argument('file')
-@click.option('-p', '--port')
-@click.option('-b', '--baud', default=9600)
-@click.option('-r', '--raw', is_flag=True)
+@click.option('-p', '--port', help="Port to connect to")
+@click.option('-b', '--baud', default=9600, help="Baudrate. Defaults to 9600.")
 def upload_file_serial(file, port, baud, verbose):
 	filename = file
 
