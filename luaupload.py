@@ -42,3 +42,6 @@ def upload_file_serial(file, port, baud, verbose):
 	s.close()
 
 	click.echo("Done downloading to module.")
+
+if __name__ == '__main__':
+	upload_file_serial()
