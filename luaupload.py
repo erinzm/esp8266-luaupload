@@ -17,26 +17,28 @@ def upload_file_serial(file, port, baud, verbose):
 	try:
 		f = open(file, 'r')
 	except:
-		echo("Could not open file {file}".format(file)
+		click.echo("Could not open file {file}".format(file))
+		raise
 
 	try:
 		s = serial.Serial(port, baud)
 	except:
-		echo("Could not open {port} at {baud}".format(port, baud)
-		sys.exit(1)
-	echo("Starting download to module...")
+		click.echo("Could not open {port} at {baud}".format(port, baud))
+		raise
+
+	click.echo("Starting download to module...")
 	s.write('file.remove("{file}")'.format(filename))
-	echo('file.remove("{file}")'.format(filename))
+	click.echo('file.remove("{file}")'.format(filename))
 	s.write('file.open("{file}", "w")'.format(filename))
-	echo('file.open("{file}", "w")'.format(filename))
+	click.echo('file.open("{file}", "w")'.format(filename))
 
 	for line in f:
 		s.write('file.writeline([[{line}]])'.format(line))
-		echo('file.writeline([[{line}]])'.format(line))
+		click.echo('file.writeline([[{line}]])'.format(line))
 
 	s.write('file.close()')
-	echo('file.close()')
+	click.echo('file.close()')
 
 	s.close()
 
-	echo("Done downloading to module.")
+	click.echo("Done downloading to module.")
