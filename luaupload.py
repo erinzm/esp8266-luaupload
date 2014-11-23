@@ -26,14 +26,14 @@ def upload_file_serial(file, port, baud):
 		raise
 
 	click.echo("Starting download to module...")
-	s.write('file.remove("{file}")'.format(filename))
-	click.echo('file.remove("{file}")'.format(filename))
-	s.write('file.open("{file}", "w")'.format(filename))
-	click.echo('file.open("{file}", "w")'.format(filename))
+	s.write('file.remove("{file}")'.format(file=filename))
+	click.echo('file.remove("{file}")'.format(file=filename))
+	s.write('file.open("{file}", "w")'.format(file=filename))
+	click.echo('file.open("{file}", "w")'.format(file=filename))
 
 	for line in f:
-		s.write('file.writeline([[{line}]])'.format(line))
-		click.echo('file.writeline([[{line}]])'.format(line))
+		s.write('file.writeline([[{line}]])'.format(line=line))
+		click.echo('file.writeline([[{line}]])'.format(line=line))
 
 	s.write('file.close()')
 	click.echo('file.close()')
