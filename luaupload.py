@@ -10,7 +10,7 @@ import serial
 @click.argument('file')
 @click.option('-p', '--port', help="Port to connect to")
 @click.option('-b', '--baud', default=9600, help="Baudrate. Defaults to 9600.")
-def upload_file_serial(file, port, baud, verbose):
+def upload_file_serial(file, port, baud):
 	filename = file
 
 	try:
