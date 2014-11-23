@@ -17,12 +17,12 @@ def upload_file_serial(file, port, baud, verbose):
 	try:
 		f = open(file, 'r')
 	except:
-		echo "Could not open file {file}".format(file = file)
+		echo("Could not open file {file}".format(file)
 
 	try:
 		s = serial.Serial(port, baud)
 	except:
-		echo "Could not open {port} at {baud}".format(port, baud)
+		echo("Could not open {port} at {baud}".format(port, baud)
 		sys.exit(1)
 	echo("Starting download to module...")
 	s.write('file.remove("{file}")'.format(filename))
