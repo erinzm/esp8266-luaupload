@@ -5,8 +5,7 @@
 Usage: luaupload.py [OPTIONS] FILE
 
 Options:
-  -p, --port TEXT
-  -b, --baud INTEGER
-  -r, --raw
+  -p, --port TEXT     Port to connect to
+  -b, --baud INTEGER  Baudrate. Defaults to 9600.
   --help              Show this message and exit.
 ````
