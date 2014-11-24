@@ -34,7 +34,7 @@ def upload_file_serial(file, port, baud):
 	time.sleep(0.1)
 
 	for line in f:
-		s.write('file.writeline([[{line}]])\n'.format(line=line))
+		s.write('file.writeline([[{line}]])\n'.format(line=line.rstrip()))
 		click.echo('file.writeline([[{line}]])'.format(line=line))
 		time.sleep(0.1)
 
