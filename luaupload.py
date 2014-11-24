@@ -26,22 +26,29 @@ def upload_file_serial(file, port, baud):
 		raise
 
 	click.echo("Starting download to module...")
-	s.write('file.remove("{file}")'.format(file=filename))
+	s.write('file.remove("{file}")\r\n'.format(file=filename))
 	click.echo('file.remove("{file}")'.format(file=filename))
 	time.sleep(0.1)
 
-	s.write('file.open("{file}", "w+")'.format(file=filename))
+	s.write('file.open("{file}", "w")\r\n'.format(file=filename))
+	click.echo('file.open("{file}", "w")'.format(file=filename))
+	s.write('file.writeline([[print(1)]])\r\n')
+	click.echo('file.writeline([[print(1)]])')
+	s.write('file.close()\r\n')
+	click.echo('file.close()')
+	time.sleep(0.1)
+
+	s.write('file.open("{file}", "w+")\r\n'.format(file=filename))
 	click.echo('file.open("{file}", "w+")'.format(file=filename))
 	time.sleep(0.1)
 
 	for line in f:
-		if line.strip != "":
-			if len( line.split("--")[0] ) > 0:
-				s.write('file.writeline([[{line}]])'.format(line=line.strip()))
-				click.echo('file.writeline([[{line}]])'.format(line=line.strip()))
-				time.sleep(0.25)
+		if line.strip() != "":
+			s.write('file.writeline([[{line}]])\r\n'.format(line=line.strip()))
+			click.echo('file.writeline([[{line}]])'.format(line=line.strip()))
+			time.sleep(0.25)
 
-	s.write('file.close()\n\r')
+	s.write('file.close()\r\n')
 	click.echo('file.close()')
 
 	s.close()
