@@ -37,8 +37,8 @@ def upload_file_serial(file, port, baud):
 	for line in f:
 		if line.strip != "":
 			if len( line.split("--")[0] ) > 0:
-				s.write('file.writeline([[{line}]])'.format(line=line.rstrip()))
-				click.echo('file.writeline([[{line}]])'.format(line=line.rstrip()))
+				s.write('file.writeline([[{line}]])'.format(line=line.strip()))
+				click.echo('file.writeline([[{line}]])'.format(line=line.strip()))
 				time.sleep(0.25)
 
 	s.write('file.close()\n\r')
