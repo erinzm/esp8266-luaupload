@@ -14,7 +14,7 @@ def cli():
 @click.argument('file')
 @click.option('-p', '--port', help="Port to connect to")
 @click.option('-b', '--baud', default=9600, help="Baudrate. Defaults to 9600.")
-def upload(file, port, baud):
+def run(file, port, baud):
 	try:
 		f = open(file, 'r')
 	except:
