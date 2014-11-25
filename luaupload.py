@@ -31,7 +31,10 @@ def run(file, port, baud):
 
 	for line in f:
 		s.write(line)
+		click.echo(line)
 		time.sleep(0.1)
+
+	s.write(line+'\r\n')
 
 @cli.command()
 @click.argument('file')
