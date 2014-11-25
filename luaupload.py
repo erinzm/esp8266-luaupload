@@ -6,23 +6,48 @@ import time
 
 import serial
 
-@click.command()
+@click.group()
+def cli():
+	pass
+
+@cli.command()
 @click.argument('file')
 @click.option('-p', '--port', help="Port to connect to")
 @click.option('-b', '--baud', default=9600, help="Baudrate. Defaults to 9600.")
-def upload_file_serial(file, port, baud):
-	filename = file
-
+def upload(file, port, baud):
 	try:
 		f = open(file, 'r')
 	except:
-		click.echo("Could not open file {file}".format(file))
+		click.echo("Could not open file {file}".format(file=file))
 		raise
 
 	try:
 		s = serial.Serial(port, baud)
 	except:
-		click.echo("Could not open {port} at {baud}".format(port, baud))
+		click.echo("Could not open {port} at {baud}".format(port=port, baud=baud))
+		raise
+
+	for line in f:
+		s.write(line)
+		time.sleep(0.1)
+
+@cli.command()
+@click.argument('file')
+@click.option('-p', '--port', help="Port to connect to")
+@click.option('-b', '--baud', default=9600, help="Baudrate. Defaults to 9600.")
+def upload(file, port, baud):
+	filename = file
+
+	try:
+		f = open(file, 'r')
+	except:
+		click.echo("Could not open file {file}".format(file=file))
+		raise
+
+	try:
+		s = serial.Serial(port, baud)
+	except:
+		click.echo("Could not open {port} at {baud}".format(port=port, baud=baud))
 		raise
 
 	click.echo("Starting download to module...")
@@ -57,4 +82,4 @@ def upload_file_serial(file, port, baud):
 	click.echo("Done downloading to module.")
 
 if __name__ == '__main__':
-	upload_file_serial()
+	cli()
