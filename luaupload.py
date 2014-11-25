@@ -30,7 +30,7 @@ def run(file, port, baud):
 		raise
 
 	for line in f:
-		#s.write(line)
+		s.write(line)
 		time.sleep(0.1)
 
 @cli.command()
@@ -46,39 +46,39 @@ def upload(file, port, baud):
 		click.echo("Could not open file {file}".format(file=file))
 		raise
 
-	#try:
-		#s = serial.Serial(port, baud)
-	#except:
-		#click.echo("Could not open {port} at {baud}".format(port=port, baud=baud))
-		#raise
+	try:
+		s = serial.Serial(port, baud)
+	except:
+		click.echo("Could not open {port} at {baud}".format(port=port, baud=baud))
+		raise
 
 	click.echo("Starting download to module...")
-	#s.write('file.remove("{file}")\r\n'.format(file=filename))
+	s.write('file.remove("{file}")\r\n'.format(file=filename))
 	click.echo('file.remove("{file}")'.format(file=filename))
 	time.sleep(0.1)
 
-	#s.write('file.open("{file}", "w")\r\n'.format(file=filename))
+	s.write('file.open("{file}", "w")\r\n'.format(file=filename))
 	click.echo('file.open("{file}", "w")'.format(file=filename))
-	#s.write('file.writeline([[print(1)]])\r\n')
+	s.write('file.writeline([[print(1)]])\r\n')
 	click.echo('file.writeline([[print(1)]])')
-	#s.write('file.close()\r\n')
+	s.write('file.close()\r\n')
 	click.echo('file.close()')
 	time.sleep(0.1)
 
-	#s.write('file.open("{file}", "w+")\r\n'.format(file=filename))
+	s.write('file.open("{file}", "w+")\r\n'.format(file=filename))
 	click.echo('file.open("{file}", "w+")'.format(file=filename))
 	time.sleep(0.1)
 
 	for line in f:
 		if line.strip() != "":
-			#s.write('file.writeline([[{line}]])\r\n'.format(line=line.strip()))
+			s.write('file.writeline([[{line}]])\r\n'.format(line=line.strip()))
 			click.echo('file.writeline([[{line}]])'.format(line=line.strip()))
 			time.sleep(0.25)
 
-	#s.write('file.close()\r\n')
+	s.write('file.close()\r\n')
 	click.echo('file.close()')
 
-	#s.close()
+	s.close()
 	f.close()
 
 	click.echo("Done downloading to module.")
