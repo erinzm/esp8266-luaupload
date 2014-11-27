@@ -30,3 +30,9 @@ Options:
   -b, --baud INTEGER  Baudrate. Defaults to 9600.
   --help              Show this message and exit.
 ````
+
+#### Prerequisites to run the program
+On any non-Windows system:
+`pip install click pyserial`.
+
+On Windows everything's prepackaged with `luaupload.exe`.
