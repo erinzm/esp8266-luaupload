@@ -1,5 +1,5 @@
 ## LuaUpload
-### Awesome program to upload code to a ESP82656 running ZeroDay's Lua interpreter
+### Awesome program to upload code to a ESP8266 running ZeroDay's Lua interpreter
 
 ````
 Usage: luaupload.py [OPTIONS] FILE
