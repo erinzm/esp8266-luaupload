@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+##
+#    LuaUpload - program to upload Lua scripts to a ESP8266
+#    Copyright (C) 2014  Liam Marshall
+#
+
 
 import sys
 import os
