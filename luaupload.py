@@ -41,40 +41,11 @@ def telnetupload(url, file):
 	ip, seperator, port = url.rpartition(':')
 	if not seperator:
 		port = 3232
-	try:
-		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	except:
-		click.echo("Could not connect to socket")
-		raise
+	
 
-	s.connect((ip, port))
+	esp.connect('telnet', {'ip': ip, 'port': port})
 
-	click.echo("Starting download to module...")
-	s.send('file.remove("{file}")\n'.format(file=filename))
-	click.echo('file.remove("{file}")'.format(file=filename))
-	time.sleep(0.1)
-
-	s.send('file.open("{file}", "w")\n'.format(file=filename))
-	click.echo('file.open("{file}", "w")'.format(file=filename))
-	s.send('file.writeline([[print(1)]])\n')
-	click.echo('file.writeline([[print(1)]])')
-	s.send('file.close()\n')
-	click.echo('file.close()')
-	time.sleep(0.1)
-
-	s.send('file.open("{file}", "w+")\n'.format(file=filename))
-	click.echo('file.open("{file}", "w+")'.format(file=filename))
-	time.sleep(0.1)
-
-	for line in f:
-		s.send('file.writeline([[{line}]])\n'.format(line=line.strip()))
-		click.echo('file.writeline([[{line}]])\n'.format(line=line.strip()))
-		time.sleep(0.1)
-
-	s.send('file.close()\n')
-
-	s.close()
-	f.close()
+	esp.upload()
 
 
 @cli.command()
@@ -88,18 +59,9 @@ def run(file, port, baud):
 		click.echo("Could not open file {file}".format(file=file))
 		raise
 
-	try:
-		s = serial.Serial(port, baud)
-	except:
-		click.echo("Could not open {port} at {baud}".format(port=port, baud=baud))
-		raise
+	esp.connect('serial', {'port': port, 'baud': baud})
 
-	for line in f:
-		s.write(line)
-		click.echo(line)
-		time.sleep(0.1)
-
-	s.write(line+'\n')
+	esp.run(f.readlines())
 
 @cli.command()
 @click.argument('file')
@@ -114,8 +76,9 @@ def upload(file, port, baud):
 		click.echo("Could not open file {file}".format(file=file))
 		raise
 
-	esp.upload(f.readlines(), {'filename': filename},
-		'serial', {'port': port, 'baud': baud})
+	esp.connect('serial', {'port': port, 'baud': baud})
+
+	esp.upload(f.readlines(), {'filename': filename})
 
 if __name__ == '__main__':
 	cli()
