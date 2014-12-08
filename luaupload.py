@@ -31,7 +31,12 @@ esp = ESP8266()
 def cli():
 	pass
 
+@cli.command()
+@click.argument('file')
+@click.option('-u', '--url', required=True, help="URL to telnet to. <hostname>:<port>.")
 def telnetupload(url, file):
+	filename = os.path.split(file)[-1]
+
 	try:
 		f = open(file, 'r')
 	except:
@@ -45,7 +50,7 @@ def telnetupload(url, file):
 
 	esp.connect('telnet', {'ip': ip, 'port': port})
 
-	esp.upload()
+	esp.upload(f.read(), {'filename': filename})
 
 
 @cli.command()
@@ -61,7 +66,7 @@ def run(file, port, baud):
 
 	esp.connect('serial', {'port': port, 'baud': baud})
 
-	esp.run(f.readlines())
+	esp.run(f.read())
 
 @cli.command()
 @click.argument('file')
@@ -78,7 +83,7 @@ def upload(file, port, baud):
 
 	esp.connect('serial', {'port': port, 'baud': baud})
 
-	esp.upload(f.readlines(), {'filename': filename})
+	esp.upload(f.read(), {'filename': filename})
 
 if __name__ == '__main__':
 	cli()
