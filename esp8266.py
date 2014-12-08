@@ -34,26 +34,26 @@ class ESP8266:
 			this.connection.send(data)
 
 
-	def upload(self, code, espoptions, protocol, commsoptions):
-			s.write('file.remove("{file}")\n'.format(file=espoptions.filename))
+	def upload(self, data, espoptions={}):
+			self.send('file.remove("{file}")\n'.format(file=espoptions.filename))
 			time.sleep(0.1)
 
-			s.write('file.open("{file}", "w")\n'.format(file=espoptions.filename))
-			s.write('file.writeline([[print(1)]])\n')
-			s.write('file.close()\n')
+			self.send('file.open("{file}", "w")\n'.format(file=espoptions.filename))
+			self.send('file.writeline([[print(1)]])\n')
+			self.send('file.close()\n')
 			time.sleep(0.1)
 
-			s.write('file.open("{file}", "w+")\n'.format(file=espoptions.filename))
+			self.send('file.open("{file}", "w+")\n'.format(file=espoptions.filename))
 			time.sleep(0.1)
 
 			# Now read the data over
-			for line in code.splitlines():
-				s.write('file.writeline([[{line}]])\n'.format(line=line.strip()))
+			for line in data.splitlines():
+				self.send('file.writeline([[{line}]])\n'.format(line=line.strip()))
 				time.sleep(0.25)
 
-			s.write('file.close()\n')
+			self.send('file.close()\n')
 
-	def run(self, data, protocol, commsoptions):
+	def run(self, data, espoptions = {}):
 		for line in data.splitlines():
 			self.send(line)
 			time.sleep(0.15)
