@@ -22,16 +22,16 @@ import time
 
 import click
 
-from luaupload.eps8266 import ESP8266
+from luaupload.esp8266 import ESP8266
 
 esp = ESP8266()
+
 
 @click.group()
 def cli():
 	pass
 
 def telnetupload(url, file):
-
 	try:
 		f = open(file, 'r')
 	except:
