@@ -29,11 +29,11 @@ class ESP8266:
 
 
 	def send(self, data):
-		# if this.protocol == 'serial':
-		# 	this.connection.write(data)
-		# elif this.protocol == 'telnet':
-		# 	this.connection.send(data)
-		click.echo(data)
+		if this.protocol == 'serial':
+			this.connection.write(data)
+		elif this.protocol == 'telnet':
+			this.connection.send(data)
+		#click.echo(data)
 
 
 	def upload(self, data, espoptions={}):
