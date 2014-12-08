@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/archimedespi/esp8266-luaupload.png?label=ready&title=Ready)](https://waffle.io/archimedespi/esp8266-luaupload)
 ## LuaUpload
 ### Awesome program to upload code to a ESP8266 running ZeroDay's Lua interpreter
 
