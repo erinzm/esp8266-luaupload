@@ -19,11 +19,12 @@
 import sys
 import os
 import time
-import socket
 
 import click
-import serial
 
+from luaupload.eps8266 import ESP8266
+
+esp = ESP8266()
 
 @click.group()
 def cli():
