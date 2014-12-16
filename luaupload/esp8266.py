@@ -9,7 +9,7 @@ class ESP8266:
 		if protocol == 'serial':
 			# Create serial connection
 			try:
-				this.connection = serial.Serial(commsoptions['port'], commsoptions['baud'])
+				self.connection = serial.Serial(commsoptions['port'], commsoptions['baud'])
 			except:
 				click.echo("Could not open serial port {port} at {baud}"
 					.format(port=commsoptions['port'], baud = commsoptions['baud']))
@@ -18,7 +18,7 @@ class ESP8266:
 		elif protocol == 'telnet':
 			# Create telnet connection
 			try:
-				this.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				s.connect((commsoptions['ip'], commsoptions['port']))
 			except:
 				click.echo("Could not connect to {ip}:{port}"
@@ -29,10 +29,10 @@ class ESP8266:
 
 
 	def send(self, data):
-		if this.protocol == 'serial':
-			this.connection.write(data)
-		elif this.protocol == 'telnet':
-			this.connection.send(data)
+		if self.protocol == 'serial':
+			self.connection.write(data)
+		elif self.protocol == 'telnet':
+			self.connection.send(data)
 		#click.echo(data)
 
 
