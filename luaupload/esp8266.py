@@ -26,6 +26,7 @@ class ESP8266:
 		else:
 			click.echo("Invalid protocol.")
 			raise ValueError
+		self.protocol = protocol
 
 
 	def send(self, data):
