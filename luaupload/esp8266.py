@@ -34,27 +34,27 @@ class ESP8266:
 			self.connection.write(data)
 		elif self.protocol == 'telnet':
 			self.connection.send(data)
-		#click.echo(data)
+		click.echo(data)
 
 
 	def upload(self, data, espoptions={}):
-			self.send('file.remove("{file}")\n'.format(file=espoptions['filename']))
+			self.send('file.remove("{file}")\r\n'.format(file=espoptions['filename']))
 			time.sleep(0.1)
 
-			self.send('file.open("{file}", "w")\n'.format(file=espoptions['filename']))
-			self.send('file.writeline([[print(1)]])\n')
-			self.send('file.close()\n')
+			self.send('file.open("{file}", "w")\r\n'.format(file=espoptions['filename']))
+			self.send('file.writeline([[print(1)]])\r\n')
+			self.send('file.close()\r\n')
 			time.sleep(0.1)
 
-			self.send('file.open("{file}", "w+")\n'.format(file=espoptions['filename']))
+			self.send('file.open("{file}", "w+")\r\n'.format(file=espoptions['filename']))
 			time.sleep(0.1)
 
 			# Now read the data over
 			for line in data.splitlines():
-				self.send('file.writeline([[{line}]])\n'.format(line=line.strip()))
+				self.send('file.writeline([[{line}]])\r\n'.format(line=line.strip()))
 				time.sleep(0.25)
 
-			self.send('file.close()\n')
+			self.send('file.close()\r\n')
 
 	def run(self, data, espoptions = {}):
 		for line in data.splitlines():
