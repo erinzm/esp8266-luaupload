@@ -39,15 +39,15 @@ class ESP8266:
 
 	def upload(self, data, espoptions={}):
 			self.send('file.remove("{file}")\r\n'.format(file=espoptions['filename']))
-			time.sleep(0.1)
+			time.sleep(0.25)
 
 			self.send('file.open("{file}", "w")\r\n'.format(file=espoptions['filename']))
 			self.send('file.writeline([[print(1)]])\r\n')
 			self.send('file.close()\r\n')
-			time.sleep(0.1)
+			time.sleep(0.25)
 
 			self.send('file.open("{file}", "w+")\r\n'.format(file=espoptions['filename']))
-			time.sleep(0.1)
+			time.sleep(0.25)
 
 			# Now read the data over
 			for line in data.splitlines():
