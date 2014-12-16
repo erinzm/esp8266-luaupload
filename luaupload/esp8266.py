@@ -51,7 +51,7 @@ class ESP8266:
 
 			# Now read the data over
 			for line in data.splitlines():
-				self.send('file.writeline([[{line}]])\r\n'.format(line=line.strip()))
+				self.send('file.writeline([[{line}]])\r\n'.format(line=line)
 				time.sleep(0.25)
 
 			self.send('file.close()\r\n')
