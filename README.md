@@ -43,6 +43,9 @@ On any non-Windows system:
 Get it with `git clone https://github.com/ArchimedesPi/esp8266-luaupload`, [download a ZIP](https://github.com/ArchimedesPi/esp8266-luaupload/archive/master.zip),
 or, on Windows, get [a release binary .exe file](https://github.com/ArchimedesPi/esp8266-luaupload/releases)
 
+Run it on Windows with `luaupload.exe`.
+Run it on Linux with `./luaupload.py`.
+
 #### License
 
 GPL, of course.
