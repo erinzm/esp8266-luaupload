@@ -39,7 +39,9 @@ Options:
 On any non-Windows system:
 `pip install click pyserial`.
 
-On Windows everything's prepackaged with `luaupload.exe`.
+#### Running the program
+Get it with `git clone https://github.com/ArchimedesPi/esp8266-luaupload`, [download a ZIP](https://github.com/ArchimedesPi/esp8266-luaupload/archive/master.zip),
+or, on Windows, get [a release binary .exe file](https://github.com/ArchimedesPi/esp8266-luaupload/releases)
 
 #### License
 
