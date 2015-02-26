@@ -35,13 +35,12 @@ Options:
   --help              Show this message and exit.
 ````
 
-#### Prerequisites to run the program
-On any non-Windows system:
-`pip install click pyserial`.
-
 #### Running the program
-Get it with `git clone https://github.com/ArchimedesPi/esp8266-luaupload`, [download a ZIP](https://github.com/ArchimedesPi/esp8266-luaupload/archive/master.zip),
-or, on Windows, get [a release binary .exe file](https://github.com/ArchimedesPi/esp8266-luaupload/releases)
+On Linux/Mac/*nix, you should install dependencies:
+`pip install click pyserial`.
+You don't need to do this for the windows release since all the dependencies are bundled into `luaupload.exe`
+
+Get the code with `git clone https://github.com/ArchimedesPi/esp8266-luaupload` or [download a ZIP](https://github.com/ArchimedesPi/esp8266-luaupload/archive/master.zip), or, on Windows, get [a binary](https://github.com/ArchimedesPi/esp8266-luaupload/releases)
 
 Run it on Windows with `luaupload.exe`.
 Run it on Linux with `./luaupload.py`.
