@@ -26,7 +26,7 @@ sv:listen(2323, connected)
 print("Telnet Server running at :2323")
 print("===Now, logon and input LUA.====")
 end
-tmr.alarm(1000, 1, function()
+tmr.alarm(0, 1000, 1, function()
 if wifi.sta.getip()=="0.0.0.0" then
 print("Connect AP, Waiting...")
 else
