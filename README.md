@@ -1,9 +1,9 @@
-## LuaUpload
-### Awesome program to upload code to a ESP8266 running ZeroDay's Lua interpreter
+## $ LuaUpload_
+### A program to upload code to a ESP8266 running ZeroDay's Lua interpreter
 
 [![Stories in Ready](https://badge.waffle.io/archimedespi/esp8266-luaupload.png?label=ready&title=Ready)](https://waffle.io/archimedespi/esp8266-luaupload)
 
-
+#### usage
 
 ````
 $ python luaupload.py --help
@@ -35,7 +35,7 @@ Options:
   --help              Show this message and exit.
 ````
 
-#### Running the program
+#### lunning the program
 On Linux/Mac/*nix, you should install dependencies:
 `pip install click pyserial`.
 You don't need to do this for the windows release since all the dependencies are bundled into `luaupload.exe`
@@ -45,7 +45,7 @@ Get the code with `git clone https://github.com/ArchimedesPi/esp8266-luaupload` 
 Run it on Windows with `luaupload.exe`.
 Run it on Linux with `./luaupload.py`.
 
-#### License
+#### license
 
 GPL, of course.
 
