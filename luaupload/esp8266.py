@@ -19,7 +19,7 @@ class ESP8266:
 			# Create telnet connection
 			try:
 				self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				s.connect((commsoptions['ip'], commsoptions['port']))
+				self.connection.connect((commsoptions['ip'], commsoptions['port']))
 			except:
 				click.echo("Could not connect to {ip}:{port}"
 					.format(ip=commsoptions['ip'], port=commsoptions['port']))
