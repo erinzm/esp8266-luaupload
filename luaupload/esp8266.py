@@ -23,6 +23,7 @@ class ESP8266:
 			except:
 				click.echo("Could not connect to {ip}:{port}"
 					.format(ip=commsoptions['ip'], port=commsoptions['port']))
+				raise
 		else:
 			click.echo("Invalid protocol.")
 			raise ValueError
