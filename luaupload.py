@@ -46,7 +46,7 @@ def telnetupload(url, file):
 	ip, seperator, port = url.rpartition(':')
 	if not seperator:
 		port = 3232
-	
+	port = int(port)
 
 	esp.connect('telnet', {'ip': ip, 'port': port})
 
