@@ -32,7 +32,7 @@ class ESP8266:
 
 	def send(self, data):
 		if self.protocol == 'serial':
-			self.connection.write(data)
+			self.connection.write(data.encode())
 		elif self.protocol == 'telnet':
 			self.connection.send(data)
 		click.echo(data)
