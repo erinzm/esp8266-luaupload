@@ -1,7 +1,7 @@
 ## $ LuaUpload_
 ### A program to upload code to a ESP8266 running ZeroDay's Lua interpreter
 
-[![Stories in Ready](https://badge.waffle.io/archimedespi/esp8266-luaupload.png?label=ready&title=Ready)](https://waffle.io/archimedespi/esp8266-luaupload)
+[![Stories in Ready](https://badge.waffle.io/archimedespi/esp8266-luaupload.png?label=ready&title=Ready)](https://waffle.io/archimedespi/esp8266-luaupload) [![Issue Stats](http://issuestats.com/github/archimedespi/esp8266-luaupload/badge/issue)](http://issuestats.com/github/archimedespi/esp8266-luaupload)
 
 #### usage
 
